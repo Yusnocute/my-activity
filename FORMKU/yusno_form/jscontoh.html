@@ -1,0 +1,45 @@
+<link rel="stylesheet" src="../dist/css/bootstrap.css"/>
+<style>
+.opening{color:red;}
+#result{}
+</style>
+
+<body>
+	Hello world
+	<input type="text" id="nilaiku" placeholder="Input nilai anda"/><span id="ket"></span><br/>
+	<textarea cols="50" rows="10" id="bio"></textarea><br/>
+	<button id="buttoncek">Cek Nilai</button><br/>
+	<div id="result">HASIL NANTI DI SINI</div><br/>
+	<div class="opening">Ini bio </div>
+	
+	
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+$("#buttoncek").click(namafungsi);
+//Tipe data dan operator:
+var nilai = $("#nilaiku").val();	//global variabel diletakkan di window utama
+var bio = $("#bio").val();
+
+//Fungsi
+function namafungsi(){
+	//Struktur kendali:
+	//Percabangan:
+	$(".opening").text(bio);
+  if(nilai != ""){					//global variabel dapat diakses dari fungsi manapun
+	if(nilai < 100 && nilai > 80) {
+		$(".opening").css({"color":"green"});
+		$("#result").html("<b>Anda dapat A</b>");
+	}
+	else{
+		//$("#result").text("Anda tidak dapat A");
+		$("#result").text(parseInt(nilai)+5);
+		parseInt(nilai); //int to string non oop style
+		nilai.toString();//string to number oop style
+	}
+  }else $("#ket").text("Nilai wajib diisi");
+}
+//Pengulangan:  
+
+//Struktur data: Array: array dan Record: object/list atau gabungan keduanya
+</script>
