@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="form-validation.css" rel="stylesheet">
+
+    <title>FORM YUSNO</title>
+  </head>
+    <div id="result"></div>
+    <h3 align="center"><strong>Billing Address</strong></h3><br>
+    	<form class="needs-validation container" id="formku" name="formku"  action="filetujuan.php" method="POST">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstname">First name</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid first name is .
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastname">Last name</label>
+                <input type="text" class="form-control" name="lastname" id="lastname" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  Valid last name is .
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control"  name="username" id="username" placeholder="Username" >
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your username is .
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email"  name="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input type="text"  name="address" class="form-control" id="address" placeholder="1234 Main St" >
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div>
+
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="same-address">
+              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Save this information for next time</label>
+            </div>
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Payment</h4>
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" >
+                <label class="custom-control-label" for="credit">Credit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" >
+                <label class="custom-control-label" for="debit">Debit card</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" >
+                <label class="custom-control-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Name on card</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" >
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" >
+                <div class="invalid-feedback">
+                  Credit card number is
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" >
+                <div class="invalid-feedback">
+                  Expiration date
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-cvv">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" >
+                <div class="invalid-feedback">
+                  Security code
+                </div>
+              </div>
+              <div class="col-sm-6 text-center align-self-center">
+                  <h6>Result</h6>
+                  <div id="signup_result">
+                      <div class="alert">&nbsp;</div>
+                  </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit-form">Continue to checkout</button>
+          </form>
+    <footer class="navbar navbar-expand-lg bg-light navbar-light">
+    	<span class="nav-item">Copyright &copy; YUSNO 2B D4 TKJ PNUP</span>
+    </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	$("#formku").submit(tangani);
+    	function tangani(e){
+	    	var data = $("#formku").serialize();
+
+			$("#result").text(data);
+			//kalau pakai fungsi serializeArray outputnya array of record - contoh lihat di console
+			var arrayform = $("#formku").serializeArray();
+			console.log(arrayform);
+
+			//var syntaxseql = "insert into user values ('"+arrayform[0]['value']+"','"+arrayform[1]['value']+"')";
+			//alert(syntaxsql);
+			//eksekusi syntaxsql
+
+			//firstname=ali&lastname=bos&paymentMethod=creditcard
+
+			$.post("filetujuan.php",{dataform : data}, function(output){
+				alert(output);
+				$("#result").html(output);
+			});
+			return false;
+	   }
+    </script>
+  </body>
+</html>
